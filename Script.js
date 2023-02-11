@@ -1,12 +1,11 @@
 fetch("https://dummyjson.com/products")
   .then((response) => response.json())
   .then((data) => {
-    let primeData = data.products;
-    let card = document.getElementById("card"); // this stores the main div element where we gonaa display our cards
+    let items = data.products;
+    let card = document.getElementById("card"); // Store main div, and here we store our data
 
-    // to loop over a primeData array of objects
-    for (let i = 0; i < primeData.length; i++) {
-      const element = primeData[i];
+    for (let i = 0; i < items.length; i++) {
+      const element = items[i];
 
       let brandd = element.brand;
       let titlee = element.title;
@@ -20,8 +19,9 @@ fetch("https://dummyjson.com/products")
 
       let spann = document.createElement("span");
 
-      spann.innerHTML = `<div class="card border border-dark border-3 border-opacity-25" style="width: 18rem;">
-    <img src="${imagee}" width="100%" height="180" class="card-img-top" alt="no image available">
+      // How we want to change the inner html of our page according to our data that we get
+      spann.innerHTML = `<div class="card border border-dark border-2 border-opacity-100" style="width: 18rem;">
+    <img src="${imagee}" width="100%" height="200px" class="card-img-top" alt="no image available">
   
     <div class="card-body">
       <h3 class="card-title">${brandd}</h3>
@@ -39,5 +39,5 @@ fetch("https://dummyjson.com/products")
       card.appendChild(spann);
     }
 
-    console.log(primeData);
+    console.log(items);
   });
